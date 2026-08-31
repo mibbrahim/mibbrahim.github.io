@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750" role="img" aria-label="Inbound voice intake waveform and captured fields">
+  <rect width="1200" height="750" fill="#fafbfc"/>
+  <g stroke="#eceff4" stroke-width="1"><path d="M0 150h1200M0 300h1200M0 450h1200M0 600h1200"/></g>
+  <g font-family="ui-sans-serif,system-ui,sans-serif">
+    <text x="80" y="105" fill="#1f2a44" font-size="30" font-weight="700">Inbound voice intake</text>
+    <text x="80" y="140" fill="#8d97a8" font-size="19">Patient calls, agent captures intake, structured record out</text>
+  </g>
+  <g fill="#2b4bf2" opacity="0.92">
+    <rect x="120" y="355" width="9" height="40" rx="4.5"/><rect x="146" y="330" width="9" height="90" rx="4.5"/>
+    <rect x="172" y="300" width="9" height="150" rx="4.5"/><rect x="198" y="270" width="9" height="210" rx="4.5"/>
+    <rect x="224" y="315" width="9" height="120" rx="4.5"/><rect x="250" y="345" width="9" height="60" rx="4.5"/>
+    <rect x="276" y="285" width="9" height="180" rx="4.5"/><rect x="302" y="240" width="9" height="270" rx="4.5"/>
+    <rect x="328" y="290" width="9" height="170" rx="4.5"/><rect x="354" y="335" width="9" height="80" rx="4.5"/>
+    <rect x="380" y="360" width="9" height="30" rx="4.5"/>
+  </g>
+  <g fill="#c9d2e3">
+    <rect x="406" y="340" width="9" height="70" rx="4.5"/><rect x="432" y="310" width="9" height="130" rx="4.5"/>
+    <rect x="458" y="275" width="9" height="200" rx="4.5"/><rect x="484" y="325" width="9" height="100" rx="4.5"/>
+    <rect x="510" y="350" width="9" height="50" rx="4.5"/><rect x="536" y="295" width="9" height="160" rx="4.5"/>
+    <rect x="562" y="330" width="9" height="90" rx="4.5"/><rect x="588" y="358" width="9" height="34" rx="4.5"/>
+  </g>
+  <g fill="#ffffff" stroke="#dbe1ea" stroke-width="1.5">
+    <rect x="660" y="250" width="220" height="64" rx="14"/>
+    <rect x="660" y="343" width="220" height="64" rx="14"/>
+    <rect x="660" y="436" width="220" height="64" rx="14"/>
+  </g>
+  <g fill="#1f2a44" font-family="ui-sans-serif,system-ui,sans-serif" font-size="18" font-weight="600">
+    <text x="700" y="289">Identity verified</text><text x="700" y="382">Reason for visit</text><text x="700" y="475">Insurance on file</text>
+  </g>
+  <g fill="#2b4bf2"><circle cx="680" cy="282" r="6"/><circle cx="680" cy="375" r="6"/><circle cx="680" cy="468" r="6"/></g>
+  <g stroke="#c9d2e3" stroke-width="2" fill="none" stroke-linecap="round">
+    <path d="M880 282h40v93"/><path d="M880 375h40"/><path d="M880 468h40v-93"/><path d="M920 375h30"/>
+  </g>
+  <rect x="950" y="343" width="150" height="64" rx="14" fill="#ffffff" stroke="#2b4bf2" stroke-width="2"/>
+  <text x="1025" y="382" fill="#2b4bf2" font-family="ui-sans-serif,system-ui,sans-serif" font-size="18" font-weight="700" text-anchor="middle">Intake</text>
+  <g font-family="ui-sans-serif,system-ui,sans-serif" font-size="16">
+    <rect x="120" y="640" width="14" height="14" rx="4" fill="#2b4bf2"/><text x="144" y="653" fill="#8d97a8">Caller</text>
+    <rect x="240" y="640" width="14" height="14" rx="4" fill="#c9d2e3"/><text x="264" y="653" fill="#8d97a8">Agent</text>
+  </g>
+</svg>

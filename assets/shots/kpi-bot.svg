@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750" role="img" aria-label="Daily airline KPI benchmark chart against competitor set">
+  <rect width="1200" height="750" fill="#fafbfc"/>
+  <g stroke="#eceff4" stroke-width="1"><path d="M80 560h1040M80 450h1040M80 340h1040M80 230h1040"/></g>
+  <g font-family="ui-sans-serif,system-ui,sans-serif">
+    <text x="80" y="105" fill="#1f2a44" font-size="30" font-weight="700">Daily KPI benchmark</text>
+    <text x="80" y="140" fill="#8d97a8" font-size="19">Fetched, computed and compared against the competitor set, automatically</text>
+  </g>
+  <g fill="#dfe4ec">
+    <rect x="120" y="440" width="46" height="120" rx="6"/><rect x="250" y="400" width="46" height="160" rx="6"/>
+    <rect x="380" y="425" width="46" height="135" rx="6"/><rect x="510" y="370" width="46" height="190" rx="6"/>
+    <rect x="640" y="410" width="46" height="150" rx="6"/><rect x="770" y="355" width="46" height="205" rx="6"/>
+    <rect x="900" y="385" width="46" height="175" rx="6"/><rect x="1030" y="345" width="46" height="215" rx="6"/>
+  </g>
+  <g fill="#2b4bf2">
+    <rect x="172" y="395" width="46" height="165" rx="6"/><rect x="302" y="340" width="46" height="220" rx="6"/>
+    <rect x="432" y="360" width="46" height="200" rx="6"/><rect x="562" y="290" width="46" height="270" rx="6"/>
+    <rect x="692" y="320" width="46" height="240" rx="6"/><rect x="822" y="262" width="46" height="298" rx="6"/>
+    <rect x="952" y="300" width="46" height="260" rx="6"/><rect x="1082" y="240" width="46" height="320" rx="6"/>
+  </g>
+  <path d="M195 375 L325 320 L455 340 L585 270 L715 300 L845 242 L975 280 L1105 220" fill="none" stroke="#1f2a44" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 6"/>
+  <circle cx="1105" cy="220" r="6" fill="#1f2a44"/>
+  <path d="M80 560h1040" stroke="#d6dce6" stroke-width="2"/>
+  <g fill="#a9b2c1" font-family="ui-sans-serif,system-ui,sans-serif" font-size="15" text-anchor="middle">
+    <text x="169" y="592">Mon</text><text x="299" y="592">Tue</text><text x="429" y="592">Wed</text><text x="559" y="592">Thu</text>
+    <text x="689" y="592">Fri</text><text x="819" y="592">Sat</text><text x="949" y="592">Sun</text><text x="1079" y="592">Mon</text>
+  </g>
+  <g font-family="ui-sans-serif,system-ui,sans-serif" font-size="16">
+    <rect x="80" y="640" width="14" height="14" rx="4" fill="#2b4bf2"/><text x="104" y="653" fill="#8d97a8">Airblue</text>
+    <rect x="200" y="640" width="14" height="14" rx="4" fill="#dfe4ec"/><text x="224" y="653" fill="#8d97a8">Competitor benchmark</text>
+  </g>
+  <g transform="translate(920,620)">
+    <rect x="0" y="0" width="200" height="58" rx="16" fill="#eef2ff" stroke="#2b4bf2" stroke-width="1.5"/>
+    <text x="100" y="37" fill="#2b4bf2" font-family="ui-sans-serif,system-ui,sans-serif" font-size="19" font-weight="700" text-anchor="middle">70% less manual</text>
+  </g>
+</svg>

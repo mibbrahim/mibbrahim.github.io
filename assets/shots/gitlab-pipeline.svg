@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750" role="img" aria-label="Jira to GitLab hotfix deployment pipeline">
+  <rect width="1200" height="750" fill="#fafbfc"/>
+  <g stroke="#eceff4" stroke-width="1"><path d="M0 150h1200M0 300h1200M0 450h1200M0 600h1200"/></g>
+  <g font-family="ui-sans-serif,system-ui,sans-serif">
+    <text x="80" y="105" fill="#1f2a44" font-size="30" font-weight="700">Hotfix pipeline</text>
+    <text x="80" y="140" fill="#8d97a8" font-size="19">Jira automation rule to GitLab webhook to deploy</text>
+  </g>
+  <path d="M155 400h890" stroke="#e2e7ef" stroke-width="3" stroke-linecap="round"/>
+  <path d="M155 400h530" stroke="#2b4bf2" stroke-width="3" stroke-linecap="round"/>
+  <path d="M420 400c60 0 60 -110 120 -110h60" stroke="#c9d2e3" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-dasharray="7 7"/>
+  <g fill="#ffffff" stroke="#2b4bf2" stroke-width="2.5"><circle cx="155" cy="400" r="17"/><circle cx="420" cy="400" r="17"/><circle cx="685" cy="400" r="17"/></g>
+  <g fill="#2b4bf2"><circle cx="155" cy="400" r="7"/><circle cx="420" cy="400" r="7"/><circle cx="685" cy="400" r="7"/></g>
+  <g fill="#ffffff" stroke="#c9d2e3" stroke-width="2.5"><circle cx="900" cy="400" r="17"/><circle cx="1045" cy="400" r="17"/></g>
+  <g fill="#c9d2e3"><circle cx="900" cy="400" r="6"/><circle cx="1045" cy="400" r="6"/></g>
+  <g fill="#1f2a44" font-family="ui-sans-serif,system-ui,sans-serif" font-size="18" font-weight="600" text-anchor="middle">
+    <text x="155" y="465">Transition</text><text x="420" y="465">Rule fires</text><text x="685" y="465">Webhook</text>
+  </g>
+  <g fill="#8d97a8" font-family="ui-sans-serif,system-ui,sans-serif" font-size="18" font-weight="600" text-anchor="middle">
+    <text x="900" y="465">Build</text><text x="1045" y="465">Deploy</text>
+  </g>
+  <g fill="#a9b2c1" font-family="ui-sans-serif,system-ui,sans-serif" font-size="15" text-anchor="middle">
+    <text x="155" y="492">Jira issue</text><text x="420" y="492">no human</text><text x="685" y="492">GitLab CI</text>
+  </g>
+  <rect x="600" y="258" width="170" height="60" rx="14" fill="#eef2ff" stroke="#2b4bf2" stroke-width="1.5"/>
+  <text x="685" y="296" fill="#2b4bf2" font-family="ui-sans-serif,system-ui,sans-serif" font-size="18" font-weight="700" text-anchor="middle">Notify team</text>
+  <g transform="translate(80,580)">
+    <text x="0" y="0" fill="#a9b2c1" font-family="ui-sans-serif,system-ui,sans-serif" font-size="16" letter-spacing="1">BEFORE</text>
+    <text x="0" y="44" fill="#a9b2c1" font-family="ui-sans-serif,system-ui,sans-serif" font-size="34" font-weight="700">hours</text>
+    <path d="M0 33h108" stroke="#c9d2e3" stroke-width="2.5"/>
+    <path d="M148 33h34" stroke="#c9d2e3" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M172 25l10 8l-10 8" stroke="#c9d2e3" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="212" y="0" fill="#2b4bf2" font-family="ui-sans-serif,system-ui,sans-serif" font-size="16" letter-spacing="1">AFTER</text>
+    <text x="212" y="44" fill="#2b4bf2" font-family="ui-sans-serif,system-ui,sans-serif" font-size="34" font-weight="700">minutes</text>
+  </g>
+</svg>

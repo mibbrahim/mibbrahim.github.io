@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750" role="img" aria-label="Surescripts ACR message flow diagram">
+  <rect width="1200" height="750" fill="#fafbfc"/>
+  <g stroke="#eceff4" stroke-width="1">
+    <path d="M0 150h1200M0 300h1200M0 450h1200M0 600h1200"/>
+    <path d="M150 0v750M300 0v750M450 0v750M600 0v750M750 0v750M900 0v750M1050 0v750"/>
+  </g>
+  <g stroke="#c9d2e3" stroke-width="2" fill="none" stroke-linecap="round">
+    <path d="M225 375h150"/>
+  </g>
+  <g stroke="#2b4bf2" stroke-width="2.5" fill="none" stroke-linecap="round">
+    <path d="M525 375c50 0 60 -115 150 -115"/>
+    <path d="M525 375c50 0 60 115 150 115"/>
+    <path d="M825 260c75 0 75 115 150 115"/>
+    <path d="M825 490c75 0 75 -115 150 -115"/>
+  </g>
+  <g fill="#ffffff" stroke="#dbe1ea" stroke-width="1.5">
+    <rect x="105" y="335" width="120" height="80" rx="14"/>
+    <rect x="975" y="335" width="120" height="80" rx="14"/>
+  </g>
+  <g fill="#ffffff" stroke="#2b4bf2" stroke-width="2">
+    <rect x="375" y="335" width="150" height="80" rx="14"/>
+    <rect x="675" y="220" width="150" height="80" rx="14"/>
+    <rect x="675" y="450" width="150" height="80" rx="14"/>
+  </g>
+  <g fill="#dbe2ff"><circle cx="450" cy="375" r="7"/><circle cx="750" cy="260" r="7"/><circle cx="750" cy="490" r="7"/></g>
+  <g fill="#8d97a8" font-family="ui-sans-serif,system-ui,sans-serif" font-size="17" text-anchor="middle">
+    <text x="165" y="381">Prescriber</text><text x="1035" y="381">Pharmacy</text>
+  </g>
+  <g fill="#1f2a44" font-family="ui-sans-serif,system-ui,sans-serif" font-size="18" font-weight="600" text-anchor="middle">
+    <text x="450" y="368">NewRx</text><text x="750" y="253">RxChange</text><text x="750" y="483">CancelRx</text>
+  </g>
+  <g fill="#2b4bf2" font-family="ui-sans-serif,system-ui,sans-serif" font-size="14" text-anchor="middle">
+    <text x="450" y="396">ACR ack</text><text x="750" y="281">ACR ack</text><text x="750" y="511">ACR ack</text>
+  </g>
+  <g font-family="ui-sans-serif,system-ui,sans-serif">
+    <text x="80" y="105" fill="#1f2a44" font-size="30" font-weight="700">33 ACR message flows</text>
+    <text x="80" y="140" fill="#8d97a8" font-size="19">Surescripts certification &#183; 24 second acknowledgment budget</text>
+  </g>
+  <g transform="translate(940,72)">
+    <rect x="0" y="0" width="180" height="52" rx="26" fill="#eef2ff" stroke="#2b4bf2" stroke-width="1.5"/>
+    <text x="90" y="34" fill="#2b4bf2" font-family="ui-sans-serif,system-ui,sans-serif" font-size="20" font-weight="700" text-anchor="middle">&#8804; 24s</text>
+  </g>
+</svg>
