@@ -59,10 +59,21 @@ Check after editing:
 document.body.innerText.match(/[A-Za-z]+-[A-Za-z]+/g)   // should only return URL fragments
 ```
 
-## Local preview
+## Running it locally
+
+Double click `start.cmd`. It serves the folder on port 5930 and opens your browser.
+Close the window to stop it.
+
+Or by hand:
 
 ```
 python -m http.server 5930
 ```
 
 Then open http://localhost:5930
+
+The server binds all interfaces, so you can also open it on a phone on the same
+wifi at `http://<your-pc-ip>:5930`. Find the IP with `ipconfig`.
+
+One gotcha: `python -m http.server` caches aggressively, so after editing a file
+do a hard refresh (Ctrl+Shift+R) or you will keep seeing the old page.
