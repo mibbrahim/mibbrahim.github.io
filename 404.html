@@ -69,10 +69,10 @@
    root is /<repo>/, on a user site or a custom domain it is /. Deriving it
    here keeps this page correct without hardcoding either shape. */
 (function () {
-  /* Name of the repo when this is published as a GitHub Pages PROJECT site.
-     Leave it set even after a rename to a user site: the check below simply
-     stops matching, and the base correctly falls back to the domain root. */
-  var PROJECT_REPO = 'ibrahim.github.io';
+  /* Published as a GitHub Pages USER site (mibbrahim.github.io), so the site
+     root is the domain root and this stays empty. If it is ever moved to a
+     project repo, set this to that repo name and the links keep working. */
+  var PROJECT_REPO = '';
 
   var first = location.pathname.split('/').filter(Boolean)[0];
   var base = (first === PROJECT_REPO) ? '/' + PROJECT_REPO + '/' : '/';
