@@ -206,17 +206,22 @@ h2 { margin: 0; font-size: clamp(1.4rem, 2.6vw, 1.95rem);
   gap: 16px; margin-bottom: 12px; }
 .job-meta .co { font-size: 12.5px; font-weight: 600; color: var(--ink-2); }
 
-/* Company and school marks. Every source is a different aspect ratio, so bound
-   both axes and let object-fit sort it out rather than fixing one dimension. */
+/* Company and school marks. The sources are wildly different shapes (wide
+   wordmarks next to a square crest), so a shared height would still look
+   uneven. Instead every mark gets an identical square tile and is contained
+   inside it, and the organisation name is carried by text beside it. */
 .logo { display: flex; align-items: center; gap: 10px; min-width: 0; }
-.logo img { height: 22px; width: auto; max-width: 128px; object-fit: contain;
-  object-position: left center; flex: none; }
-.logo-sq img { height: 30px; max-width: 40px; }
+/* One tile size for all of them. It is a rectangle, not a square: four of the
+   five sources are wide wordmarks, and a square crushes those to a 4px sliver
+   while only the one square crest fills it. */
+.logo-mark { width: 78px; height: 34px; flex: none; display: grid; place-items: center;
+  padding: 4px 6px; border: 1px solid var(--line); border-radius: 9px; background: #fff; }
+/* Explicit px, not percentages: a percentage max-height does not resolve
+   against a centred grid item, so the square crest overflowed the tile. */
+.logo-mark img { max-width: 64px; max-height: 24px; width: auto; height: auto;
+  object-fit: contain; }
 
-.mini-head { display: flex; align-items: center; gap: 11px; margin-bottom: 6px; }
-.mini-head img { height: 26px; width: auto; max-width: 150px; object-fit: contain;
-  object-position: left center; flex: none; }
-.mini-head.sq img { height: 34px; max-width: 34px; }
+.mini-head { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
 .mini-head h3 { margin: 0; }
 .job-meta .when { font-size: 11.5px; color: var(--faint); font-weight: 500;
   white-space: nowrap; font-variant-numeric: tabular-nums; }
