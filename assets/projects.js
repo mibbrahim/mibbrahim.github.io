@@ -38,60 +38,6 @@ window.PROJECTS = [
     ]
   },
   {
-    slug: 'ai-scribe-mobile',
-    title: 'AI Scribe Mobile',
-    org: 'Practice EHR',
-    group: 'ai',
-    category: 'Mobile Product',
-    year: '2026',
-    status: 'Live',
-    tagline: 'The scribe rebuilt as a real mobile app, covering capture, transcript, review and background processing on a phone.',
-    link: 'https://ai-scribe-mobile.vercel.app',
-    shot: 'ai-scribe-mobile.jpg',
-    fit: 'contain',
-    role: 'Product Manager. Design translation and build',
-    timeline: '2026',
-    focus: 'Mobile clinical capture',
-    stack: ['React Native', 'Expo', 'expo router', 'TypeScript', 'Figma'],
-    overview: [
-      'Documentation does not happen at a desk. This is the AI Scribe experience rebuilt as a native mobile app from the design system’s mobile Figma library, one codebase targeting iOS and Android.',
-      'The mobile version had to solve problems the desktop one does not. A provider walks away mid encounter, takes a call, or loses signal. Capture therefore has to be interruptible and resumable rather than one uninterrupted session.'
-    ],
-    contributions: [
-      'Translated the mobile design frames into a working application, screen by screen, against the source Figma rather than an approximation of it.',
-      'Built the full capture lifecycle for a phone: visit details, scribe setup, live recording, transcript review, processing, resume later, and a background state.',
-      'Kept a single codebase for iOS and Android so the flow does not diverge between platforms.',
-      'Carried the AI suggestions and scribe settings surfaces across from the desktop product so behaviour stays consistent.'
-    ]
-  },
-  {
-    slug: 'ai-visit-summary',
-    title: 'AI Visit Summary',
-    org: 'Practice EHR',
-    group: 'ai',
-    category: 'AI Product',
-    year: '2026',
-    status: 'Live',
-    tagline: 'Turns a signed clinical note into plain language the patient can actually read. The provider reviews it before release.',
-    link: 'https://ai-visit-summary.vercel.app',
-    shot: 'ai-visit-summary.jpg',
-    fit: 'cover',
-    role: 'Product Manager. End to end flow design',
-    timeline: '2026',
-    focus: 'Patient communication',
-    stack: ['LLM', 'Prototyping', 'Clinical Workflow', 'Multi language'],
-    overview: [
-      'A progress note is written for other clinicians and for billing. Patients receive it and understand almost none of it. This feature generates a plain language version of the visit and releases it to the patient portal.',
-      'The important design decision is the gate. The summary is generated after sign off and shown to the provider first. Nothing reaches the patient until a clinician has read it and pressed release, because an AI summary of a medical encounter is not a place for silent automation.'
-    ],
-    contributions: [
-      'Designed the whole path: Open Visit status, sign off confirmation, generated progress note, print preview, AI summary, provider edit, release to portal.',
-      'Made reading level and language selectable, so the same note can be issued at a simpler grade level or in the patient’s own language.',
-      'Put an explicit provider approval step in front of release. The summary is a draft for a human, never an automatic patient facing message.',
-      'Specified a second variant that summarizes a visit which has no clinical note at all, working from the CPT and ICD claim lines instead.'
-    ]
-  },
-  {
     slug: 'ai-assistant',
     title: 'In Product AI Assistant',
     org: 'Practice EHR',
@@ -256,59 +202,6 @@ window.PROJECTS = [
     ]
   },
   {
-    slug: 'demographics',
-    title: 'Demographics & Configure Fields',
-    org: 'Practice EHR',
-    group: 'design',
-    category: 'Product Design',
-    year: '2026',
-    status: 'Live',
-    tagline: 'The patient demographics screen, plus a field editor that lets a practice reorder, require and hide fields.',
-    link: 'https://demographics-configure.vercel.app',
-    shot: 'demographics.jpg',
-    fit: 'cover',
-    role: 'Product Manager. Figma to working screen',
-    timeline: '2026',
-    focus: 'Configurability',
-    stack: ['Figma', 'Design System', 'Prototyping'],
-    overview: [
-      'Demographics is one of the most used screens in the product and one of the most argued about, because every practice wants a slightly different set of fields in a slightly different order.',
-      'I built the screen from the design file and added the thing that resolves the argument: a field editor where a practice can drag fields into their own order, mark them required, or hide them entirely.'
-    ],
-    contributions: [
-      'Implemented the demographics screen faithfully from the source design rather than approximating it.',
-      'Added a field editor supporting drag to reorder, mark as required, and hide.',
-      'Solved the layout problem hiding a field creates. The grid repacks so a hidden field does not leave a hole in the form.',
-      'Kept the whole thing inside the shared design system so it matches the rest of the product.'
-    ]
-  },
-  {
-    slug: 'patient-portal',
-    title: 'Patient Portal',
-    org: 'Practice EHR',
-    group: 'design',
-    category: 'Product Design',
-    year: '2026',
-    status: 'Live',
-    tagline: 'The full patient portal front end running standalone, used to prototype and demo portal features with no backend.',
-    link: 'https://pehr-patient-portal.vercel.app',
-    shot: 'patient-portal.jpg',
-    fit: 'cover',
-    role: 'Product Manager. Prototyping harness',
-    timeline: '2026',
-    focus: 'Patient facing product',
-    stack: ['React', 'Design System', 'Prototyping'],
-    overview: [
-      'Demonstrating a portal change normally means a full environment: backend, database, test patients. That is slow, and it means concepts get discussed in the abstract instead of clicked through.',
-      'I got the real portal front end running on its own with the network layer mocked, so any portal concept can be built and demonstrated as a working screen. Balance, messages, appointments, health records and visit summaries all included.'
-    ],
-    contributions: [
-      'Stood up the production portal front end with no backend, so portal work can be prototyped and shown at full fidelity.',
-      'Used it as the destination for the AI Visit Summary release flow, so the handoff could be demonstrated from one end to the other.',
-      'Prototyped an AI Assist concept for patients inside the real portal shell rather than in a mockup.'
-    ]
-  },
-  {
     slug: 'kiosk',
     title: 'Patient Check In Kiosk',
     org: 'Practice EHR',
@@ -333,32 +226,6 @@ window.PROJECTS = [
       'Gave patients four ways to identify themselves: access code, portal login, new patient, or lookup. A single path excludes someone.',
       'Sized the whole interface for touch on a kiosk rather than shrinking a desktop screen.',
       'Kept an explicit route to a human on screen for anyone who cannot or should not use self service.'
-    ]
-  },
-  {
-    slug: 'ai-noshow',
-    title: 'AI Show Up Likelihood',
-    org: 'Practice EHR',
-    group: 'ai',
-    category: 'ML Feature',
-    year: '2026',
-    status: 'Live',
-    tagline: 'No show risk scored inline across three scheduling views, with a tooltip that explains every individual score.',
-    link: 'https://pehr-ai-noshow.vercel.app',
-    shot: 'ai-noshow.jpg',
-    fit: 'cover',
-    role: 'Product Manager. Feature design',
-    timeline: '2026',
-    focus: 'Explainable ML in the UI',
-    stack: ['Machine Learning', 'SHAP', 'Scheduling', 'Prototyping'],
-    overview: [
-      'A no show costs a slot that could have gone to someone else. A model can flag the risk, but a bare percentage next to a patient’s name is not something front desk staff will act on or trust.',
-      'The design surfaces the score where scheduling decisions are already being made, and pairs it with an explanation, for each appointment, of which factors drove it.'
-    ],
-    contributions: [
-      'Put the likelihood indicator inline in all three scheduling views instead of hiding it in a separate report.',
-      'Attached a SHAP based explanation to every score, so staff can see which factors pushed a specific appointment up or down.',
-      'Designed it as decision support. The score informs an overbooking or reminder decision, it never cancels or moves anything on its own.'
     ]
   },
   {
@@ -441,6 +308,34 @@ window.PROJECTS = [
       'Made it work offline first, because a workshop is exactly where signal drops.',
       'Built a catalogue of local parts and services so logging a job is a few taps instead of free typing.',
       'Added an interactive 3D car viewer with paint colour selection for picking your own vehicle.'
+    ]
+  },
+  {
+    slug: 'botcro',
+    title: 'BotCro',
+    org: 'My own venture',
+    group: 'personal',
+    category: 'AI Voice Agents',
+    year: '2026',
+    status: 'Live',
+    tagline: 'My own company. AI phone agents that answer and place calls, take orders and book appointments, in 40+ languages.',
+    link: 'https://www.botcro.com',
+    shot: 'botcro.jpg',
+    fit: 'cover',
+    role: 'Founder. Product, build and go to market',
+    timeline: '2026',
+    focus: 'Voice AI for small business',
+    stack: ['LLM', 'Voice AI', 'Node', 'React', 'Express'],
+    overview: [
+      'A missed call is a lost customer for a restaurant, a clinic or a salon, and none of them can staff a phone line around the clock. BotCro answers and places calls that sound human, taking orders, booking appointments and qualifying leads on the first ring, 24 hours a day and in more than 40 languages.',
+      'This is my own company, so I do all of it: the product decisions, the build, the brand and the selling. It is live with customers across the US, Pakistan, the UAE and Qatar, in restaurants, clinics, salons and real estate.'
+    ],
+    contributions: [
+      'Built the voice agent product itself, covering inbound and outbound calling with sub second replies and a large library of voices.',
+      'Built a CRM and social command centre I host myself, with a lead pipeline, an approvals queue, a content studio, a calendar and analytics.',
+      'Made the whole publishing system approve first. AI drafts and schedules, but nothing goes out until a human approves it in the queue.',
+      'Chose assisted publishing over full automation for personal profiles, because automating those gets real accounts banned. It cost a feature and protected the customer.',
+      'Designed and shipped the brand and the marketing site, and run the content pipeline that produces the social output.'
     ]
   }
 ];

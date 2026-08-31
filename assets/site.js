@@ -19,7 +19,7 @@
     { key: 'ops',    label: 'Delivery & Ops' },
     { key: 'design', label: 'Design' },
     { key: 'data',   label: 'Data & Automation' },
-    { key: 'personal', label: 'Personal' }
+    { key: 'personal', label: 'Personal & Ventures' }
   ];
 
   var ARROW = '<span class="box-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
