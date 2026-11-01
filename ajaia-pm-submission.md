@@ -3,7 +3,7 @@
 
 # Prototype
 Local file: `/workspace/ajaia-pm/prototype/index.html` (open in a browser; fully clickable 3-screen coach confirm flow).
-Public URL: https://mibrahim.github.io/sidelinereel-prototype/index.html
+Public URL: https://mibbrahim.github.io/sidelinereel-prototype/index.html
 Zip: `/workspace/ajaia-pm/sidelinereel-roster-tagging-prototype.zip`
 
 # Portfolio (optional)
