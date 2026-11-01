@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SidelineReel — Confirm tags</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #1a1a1a;
+    background: #f4f5f7;
+  }
+  a { color: #2563eb; }
+  .top {
+    background: #fff;
+    border-bottom: 1px solid #e2e5ea;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .brand {
+    font-weight: 650;
+    font-size: 15px;
+    color: #111;
+  }
+  .brand em {
+    font-style: normal;
+    color: #0b7a4b;
+  }
+  .crumb { color: #6b7280; font-size: 13px; }
+  .crumb strong { color: #111; font-weight: 550; }
+  .wrap { max-width: 720px; margin: 20px auto; padding: 0 16px 40px; }
+  .panel {
+    background: #fff;
+    border: 1px solid #e2e5ea;
+    border-radius: 8px;
+    padding: 18px 18px 16px;
+  }
+  h1 { font-size: 18px; margin: 0 0 4px; font-weight: 650; }
+  h2 { font-size: 15px; margin: 0 0 10px; font-weight: 600; }
+  .sub { color: #6b7280; margin: 0 0 14px; font-size: 13px; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin: 14px 0;
+  }
+  .metric {
+    border: 1px solid #e2e5ea;
+    border-radius: 6px;
+    padding: 10px 12px;
+    background: #fafbfc;
+  }
+  .metric .n { font-size: 20px; font-weight: 650; letter-spacing: -0.02em; }
+  .metric .l { font-size: 12px; color: #6b7280; margin-top: 2px; }
+  .metric.warn .n { color: #b45309; }
+  .alert {
+    border: 1px solid #f0d7a8;
+    background: #fffbeb;
+    border-radius: 6px;
+    padding: 12px 14px;
+    margin: 12px 0 16px;
+    font-size: 13px;
+  }
+  .alert strong { display: block; margin-bottom: 2px; }
+  .held { font-size: 12px; color: #6b7280; margin-top: 10px; }
+  button {
+    font: inherit;
+    border-radius: 6px;
+    padding: 8px 14px;
+    cursor: pointer;
+    border: 1px solid #c9ced6;
+    background: #fff;
+    color: #111;
+  }
+  button:hover { background: #f8f9fb; }
+  button.primary {
+    background: #0b7a4b;
+    border-color: #0b7a4b;
+    color: #fff;
+    font-weight: 600;
+  }
+  button.primary:hover { background: #096540; }
+  button.primary:disabled { opacity: 0.45; cursor: not-allowed; }
+  button.ghost { background: transparent; }
+  .actions { display: flex; gap: 8px; align-items: center; margin-top: 14px; flex-wrap: wrap; }
+  .actions .spacer { flex: 1; }
+  .progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #6b7280;
+    margin-bottom: 6px;
+  }
+  .bar-track {
+    height: 4px;
+    background: #e5e7eb;
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 14px;
+  }
+  .bar-fill { height: 100%; background: #0b7a4b; width: 0; transition: width .2s; }
+  .layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 16px;
+  }
+  .frame {
+    background: #1e2930;
+    border-radius: 6px;
+    height: 160px;
+    position: relative;
+    overflow: hidden;
+  }
+  .frame .pitch {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(90deg, transparent 0 11%, rgba(255,255,255,.04) 11% 12%, transparent 12%),
+      #2a4a38;
+  }
+  .jersey-box {
+    position: absolute;
+    left: 50%; top: 46%;
+    transform: translate(-50%, -50%);
+    width: 70px; height: 82px;
+    background: #b91c1c;
+    border-radius: 8px 8px 4px 4px;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff;
+    font-size: 28px;
+    font-weight: 800;
+    filter: blur(0.8px);
+    opacity: 0.92;
+  }
+  .detect {
+    position: absolute;
+    left: calc(50% - 42px);
+    top: calc(46% - 48px);
+    width: 84px; height: 96px;
+    border: 1.5px solid #fbbf24;
+    border-radius: 4px;
+  }
+  .stamp {
+    position: absolute;
+    right: 8px; bottom: 8px;
+    background: rgba(0,0,0,.55);
+    color: #fff;
+    font-size: 11px;
+    padding: 2px 6px;
+    border-radius: 3px;
+  }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 7px;
+    border-radius: 3px;
+    background: #fef3c7;
+    color: #92400e;
+    border: 1px solid #f0d7a8;
+  }
+  .tag.risk { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+  .note {
+    font-size: 12px;
+    color: #4b5563;
+    background: #f9fafb;
+    border-left: 3px solid #d1d5db;
+    padding: 8px 10px;
+    margin: 10px 0;
+  }
+  .choice {
+    border: 1px solid #e2e5ea;
+    border-radius: 6px;
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+  .choice:hover { border-color: #9ca3af; }
+  .choice.on {
+    border-color: #0b7a4b;
+    background: #f0fdf6;
+  }
+  .choice .left { display: flex; gap: 10px; align-items: center; }
+  .badge-num {
+    width: 32px; height: 32px;
+    border-radius: 4px;
+    background: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 13px;
+  }
+  .choice .meta { font-size: 12px; color: #6b7280; }
+  .pct {
+    font-size: 12px; color: #6b7280;
+    min-width: 36px; text-align: right;
+  }
+  .mini {
+    width: 72px; height: 4px;
+    background: #e5e7eb; border-radius: 2px; overflow: hidden;
+    display: inline-block; vertical-align: middle; margin-right: 6px;
+  }
+  .mini i { display: block; height: 100%; background: #6b7280; }
+  select {
+    font: inherit;
+    padding: 6px 8px;
+    border: 1px solid #c9ced6;
+    border-radius: 6px;
+    background: #fff;
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 8px; }
+  th, td { text-align: left; padding: 8px 6px; border-bottom: 1px solid #eef0f3; }
+  th { color: #6b7280; font-weight: 500; font-size: 12px; }
+  .ok-text { color: #0b7a4b; font-weight: 600; }
+  .muted { color: #6b7280; }
+  .hide { display: none !important; }
+  .footer {
+    text-align: center;
+    font-size: 11px;
+    color: #9ca3af;
+    margin-top: 28px;
+  }
+  @media (max-width: 640px) {
+    .layout, .grid { grid-template-columns: 1fr 1fr; }
+    .layout { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+  <div class="top">
+    <div class="brand">Sideline<em>Reel</em></div>
+    <div class="crumb">Coach · Ridgeline U12 Hawks · <strong>vs Eastside FC</strong> · Sat Oct 31</div>
+  </div>
+
+  <div class="wrap">
+
+    <section id="scr1">
+      <div class="panel">
+        <h1>Processing finished</h1>
+        <p class="sub">142 highlight clips extracted. High-confidence tags auto-confirmed. A few need a quick check before family reels go out.</p>
+        <div class="grid">
+          <div class="metric"><div class="n">142</div><div class="l">clips found</div></div>
+          <div class="metric"><div class="n">18</div><div class="l">players tagged</div></div>
+          <div class="metric"><div class="n">139</div><div class="l">auto-confirmed (≥95%)</div></div>
+          <div class="metric warn"><div class="n">3</div><div class="l">need confirm</div></div>
+        </div>
+        <div class="alert">
+          <strong>3 clips held — look-alike jersey numbers</strong>
+          Low confidence on #4 / #14 and #1 / #11. Personal reels for Maya R., Ava T., and Leo K. stay held until you confirm. Everyone else’s reels are ready.
+        </div>
+        <div class="actions">
+          <button class="primary" type="button" onclick="go(2)">Review 3 clips</button>
+        </div>
+        <p class="held">Held: Maya R. (#4), Ava T. (#14), Leo K. (#11) · 15 other reels ready</p>
+      </div>
+    </section>
+
+    <section id="scr2" class="hide">
+      <div class="progress-label">
+        <span>Confirm tags</span>
+        <span id="ctr">Clip 1 of 3</span>
+      </div>
+      <div class="bar-track"><div class="bar-fill" id="pg"></div></div>
+      <div class="panel" id="clipCard"></div>
+      <div class="actions">
+        <button type="button" id="prevB" onclick="prev()">Back</button>
+        <span class="spacer"></span>
+        <button type="button" class="ghost" onclick="skip()">Exclude clip</button>
+        <button type="button" class="primary" id="nextB" onclick="next()" disabled>Confirm and next</button>
+      </div>
+    </section>
+
+    <section id="scr3" class="hide">
+      <div class="panel">
+        <h1>Ready to send</h1>
+        <p class="sub">All high-risk tags resolved. 18 personal reels unlocked. Thumbnails for changed reels will regenerate before notify.</p>
+        <table>
+          <thead>
+            <tr><th>Clip</th><th>Detected</th><th>Final</th><th>Action</th></tr>
+          </thead>
+          <tbody id="sum"></tbody>
+        </table>
+        <div class="actions">
+          <span class="muted" style="font-size:12px;flex:1">Corrections save as training labels and update this team’s look-alike watchlist.</span>
+          <button type="button" onclick="go(2)">Edit</button>
+          <button type="button" class="primary" id="sendB" onclick="send()">Send 18 reels to families</button>
+        </div>
+      </div>
+      <div class="panel hide" id="sent" style="margin-top:12px">
+        <h2 class="ok-text">Sent</h2>
+        <p class="sub" style="margin:0">18 families notified. Corrected reels use the confirmed player on the thumbnail.</p>
+        <div class="actions"><button type="button" onclick="reset()">Restart demo</button></div>
+      </div>
+    </section>
+
+    <p class="footer">SidelineReel coach confirm prototype · Muhammad Ibrahim · <a href="https://ajaia.ai" target="_blank" rel="noopener">ajaia.ai</a></p>
+  </div>
+
+<script>
+const roster = [
+  { n: 4, name: "Maya R." },
+  { n: 14, name: "Ava T." },
+  { n: 1, name: "Sam P." },
+  { n: 11, name: "Leo K." },
+  { n: 7, name: "Noor A." },
+  { n: 9, name: "Zoe L." },
+  { n: 6, name: "Ella M." }
+];
+
+const clips = [
+  {
+    id: "C-031",
+    t: "12:41",
+    read: "14",
+    why: "Left digit partially covered by the arm. Pair 4 ↔ 14 is on the look-alike watchlist for this club.",
+    cands: [{ n: 14, p: 58 }, { n: 4, p: 39 }]
+  },
+  {
+    id: "C-077",
+    t: "27:05",
+    read: "4",
+    why: "Motion blur during the celebration. Ava (#14) and Maya (#4) are both in frame at this timestamp.",
+    cands: [{ n: 4, p: 61 }, { n: 14, p: 36 }]
+  },
+  {
+    id: "C-118",
+    t: "41:22",
+    read: "11",
+    why: "Jersey fold may merge the digits. Pair 1 ↔ 11 is on the look-alike watchlist.",
+    cands: [{ n: 11, p: 71 }, { n: 1, p: 26 }]
+  }
+];
+
+let i = 0;
+const dec = {};
+const $ = (id) => document.getElementById(id);
+const nm = (n) => (roster.find((r) => r.n === n) || {}).name || "";
+
+function go(s) {
+  [1, 2, 3].forEach((k) => {
+    $("scr" + k).classList.toggle("hide", k !== s);
+  });
+  if (s === 2) render();
+  if (s === 3) summary();
+  window.scrollTo(0, 0);
+}
+
+function render() {
+  const c = clips[i];
+  const d = dec[c.id];
+  $("ctr").textContent = "Clip " + (i + 1) + " of " + clips.length;
+  $("pg").style.width = (Object.keys(dec).length / clips.length) * 100 + "%";
+
+  const risk = c.cands[0].p < 60;
+  const options = c.cands
+    .map((k) => {
+      const selected = d && d.n === k.n;
+      const label = k.n === c.cands[0].n ? "Suggested" : "Look-alike";
+      return (
+        '<div class="choice' +
+        (selected ? " on" : "") +
+        '" role="button" tabindex="0" onclick="pick(' +
+        k.n +
+        ')">' +
+        '<div class="left"><div class="badge-num">#' +
+        k.n +
+        "</div><div><div><strong>" +
+        nm(k.n) +
+        '</strong></div><div class="meta">' +
+        label +
+        "</div></div></div>" +
+        '<div><span class="mini"><i style="width:' +
+        k.p +
+        '%"></i></span><span class="pct">' +
+        k.p +
+        "%</span></div></div>"
+      );
+    })
+    .join("");
+
+  const otherOpts = roster
+    .map((r) => {
+      const already = c.cands.some((k) => k.n === r.n);
+      if (already) return "";
+      const sel = d && d.n === r.n ? " selected" : "";
+      return '<option value="' + r.n + '"' + sel + ">#" + r.n + " " + r.name + "</option>";
+    })
+    .join("");
+
+  $("clipCard").innerHTML =
+    '<div class="layout">' +
+    '<div class="frame"><div class="pitch"></div><div class="jersey-box">' +
+    c.read +
+    '</div><div class="detect"></div><div class="stamp">' +
+    c.id +
+    " · " +
+    c.t +
+    "</div></div>" +
+    "<div>" +
+    '<div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">' +
+    "<strong>Detected jersey #" +
+    c.read +
+    '</strong><span class="tag' +
+    (risk ? " risk" : "") +
+    '">' +
+    (risk ? "High risk" : "Ambiguous") +
+    " · " +
+    c.cands[0].p +
+    "%</span></div>" +
+    '<div class="note">' +
+    c.why +
+    "</div>" +
+    options +
+    '<div style="margin-top:10px;font-size:12px;color:#6b7280">Someone else? ' +
+    '<select id="reassign" onchange="if(this.value)pick(+this.value)"><option value="">Reassign to…</option>' +
+    otherOpts +
+    "</select></div>" +
+    "</div></div>";
+
+  $("nextB").disabled = !d;
+  $("prevB").disabled = i === 0;
+  $("nextB").textContent = i === clips.length - 1 ? "Finish" : "Confirm and next";
+}
+
+function actionFor(n) {
+  const c = clips[i];
+  if (n === c.cands[0].n) return "Confirmed";
+  return "Reassigned";
+}
+
+function pick(n) {
+  dec[clips[i].id] = { n: n, a: actionFor(n) };
+  render();
+}
+
+function next() {
+  if (!dec[clips[i].id]) return;
+  if (i < clips.length - 1) {
+    i++;
+    render();
+  } else {
+    go(3);
+  }
+}
+
+function prev() {
+  if (i > 0) {
+    i--;
+    render();
+  }
+}
+
+function skip() {
+  dec[clips[i].id] = { n: null, a: "Excluded" };
+  if (i < clips.length - 1) {
+    i++;
+    render();
+  } else {
+    go(3);
+  }
+}
+
+function summary() {
+  $("sum").innerHTML = clips
+    .map((c) => {
+      const d = dec[c.id];
+      const final = d.n ? "#" + d.n + " " + nm(d.n) : "—";
+      return (
+        "<tr><td>" +
+        c.id +
+        " · " +
+        c.t +
+        "</td><td>#" +
+        c.read +
+        "</td><td>" +
+        final +
+        "</td><td>" +
+        d.a +
+        "</td></tr>"
+      );
+    })
+    .join("");
+  $("sent").classList.add("hide");
+  $("sendB").disabled = false;
+}
+
+function send() {
+  $("sendB").disabled = true;
+  $("sent").classList.remove("hide");
+}
+
+function reset() {
+  i = 0;
+  Object.keys(dec).forEach((k) => delete dec[k]);
+  go(1);
+}
+</script>
+</body>
+</html>
