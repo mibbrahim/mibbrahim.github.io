@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ajaia PM Assessment — Muhammad Ibrahim</title>
+<style>
+body{margin:0;background:#f6f7f9;color:#1a1a1a;font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.wrap{max-width:820px;margin:24px auto;padding:0 16px 48px}
+.card{background:#fff;border:1px solid #e5e7eb;border-radius:8px;padding:24px 28px}
+h1.page{font-size:20px;margin:0 0 4px}
+.meta{color:#6b7280;font-size:13px;margin:0 0 18px}
+pre{white-space:pre-wrap;word-wrap:break-word;font:13px/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;margin:0}
+a{color:#2563eb}
+</style></head><body>
+<div class="wrap">
+<p class="meta"><a href="https://ajaia.ai">ajaia.ai</a> · Muhammad Ibrahim · Product Manager assessment</p>
+<div class="card"><h1 class="page">SidelineReel — Ajaia PM submission</h1>
+<pre># Video
+[VIDEO_LINK_PLACEHOLDER — paste Loom/YouTube URL here before submit]
+
+# Prototype
+Local file: `/workspace/ajaia-pm/prototype/index.html` (open in a browser; fully clickable 3-screen coach confirm flow).
+Public URL: https://mibrahim.github.io/sidelinereel-prototype/index.html
+Zip: `/workspace/ajaia-pm/sidelinereel-roster-tagging-prototype.zip`
+
+# Portfolio (optional)
+- Resume: https://mibbrahim.github.io/assets/Muhammad-Ibrahim-Resume.pdf
+- Portfolio: https://mibbrahim.github.io/
+- Product reference: https://ajaia.ai
+
+---
+
+## Task 1. The roadmap call
+
+### What SidelineReel builds next
+**#1 — Roster Tagging Confidence (jersey look-alike / digit-swap accuracy) — BUILD NOW**
+
+Core job of SidelineReel: put the right highlight in the right kid’s reel. That job is failing in production.
+
+**Evidence (Materials 1–5):**
+- Three support tickets this week alone describe wrong-kid clips from similar jersey numbers: Ridgeline #14 vs #4; Brightwater digit-swaps; Cobblestone #1 vs #11.
+- Material 5: ~30% of generated reels are never opened. Analytics explicitly links unopened reels to late notifications *and* thumbnails that show the wrong kid — the same failure mode as the tickets.
+- Material 1 / Carla: highlight reels are “a big part of why half our parents renewed.” The $180k Ridgeline renewal is at risk if the product parents renew for keeps shipping the wrong kid.
+- Share rate looks healthy (90–92%) but is computed only on reels parents opened — it hides the broken tail. Treating 92% as health is the misleading metric.
+
+### Full ranking
+| Rank | Candidate | Call | Why |
+|------|-----------|------|-----|
+| 1 | Roster Tagging Confidence + coach confirm for low-confidence tags | **Build next** | Core promise broken; tickets + analytics agree; protects Ridgeline’s stated renewal reason |
+| 2 | Notification timing / open-rate hygiene | Later | Secondary driver of unopened reels; do after tagging so thumbnails stop lying |
+| 3 | Concrete Ridgeline retention response (non-livestream) | Sales + PM ops, not eng epic | Need a clear answer to Carla/Jamal this week |
+| 4 | Expand Reel Editor / music / trim controls | **Do not build next** | Survey #1 ask (58%) but usage: 6% open editor, &lt;1% finish an edit. Stated preference ≠ revealed preference |
+| 5 | Full game livestreaming | **Do not build next** | Outside core job; multi-quarter lift; 6 weeks to signups; does not fix why reels go unopened |
+| 6 | App icon / watermark | Skip / backlog | Ticket 4–5; not urgent; not retention |
+
+### What I would NOT build next (and why)
+
+**1) Full livestreaming for Ridgeline — not next.**  
+Jamal’s $180k pressure is real. Carla’s board ask is loud. Livestreaming is still the wrong next build: it is a platform-scale feature (latency, rights, bandwidth, sideline ops) that does not fix the defect parents already feel. Shipping a “livestream commitment” while #14 gets #4’s goals is how you lose the renewal *and* the brand.  
+
+**Concrete message to Carla / Jamal (not “we hear you”):**  
+- We will not ship full livestream before Ridgeline signups open in six weeks — that timeline is not credible for a quality release.  
+- What we *will* ship in this cycle: Roster Tagging Confidence so Ridgeline parents stop getting the wrong kid on the thumbnail — the exact failure in their own support ticket this week.  
+- What we *can* commit on livestream: a dated discovery outcome (constraints, MVP options like delayed “almost-live” clip drops vs true broadcast) within X weeks, with a go/no-go — not a fake roadmap checkbox.
+
+**2) Expanding the Reel Editor based on the survey — not next.**  
+58% named editing controls as their biggest ask; &lt;1% of parents finish an edit. Building more editor depth doubles down on a feature almost nobody completes. Revisit only after open/completion rates move, or with a radically smaller “one-tap trim” experiment — not a music/editor expansion.
+
+### Pushback stance (sales / loudest voice)
+I will not fold the roadmap to the loudest account when the evidence says the core loop is broken. Ridgeline’s own ticket (#14/#4) is the proof. Protecting highlight integrity is how we protect the $180k renewal reason Carla already wrote down.
+
+---
+
+## Task 2. The spec — Roster Tagging Confidence
+
+### Outcome
+Reduce wrong-kid clips in personal reels and raise reel *open* rate by stopping wrong-kid thumbnails from shipping. Success = fewer tagging-related support tickets, fewer reels held/unopened due to identity errors, coach confirm time under ~60s per game for typical ambiguity volume.
+
+### Problem
+Jersey OCR / roster matching confuses look-alike numbers (4↔14, 1↔11, digit swaps). Wrong tags produce wrong personal reels and wrong thumbnails → parents don’t open → share metrics look fine while trust erodes.
+
+### In scope
+1. **Confidence score** on each jersey→roster match (model + heuristics for look-alike pairs).  
+2. **Look-alike watchlist** seeded with known confusions (1/11, 4/14, 6/9, 3/8, digit-swap pairs); club-specific additions from coach corrections.  
+3. **Coach Confirm queue**: before family send, surface only low-confidence / look-alike conflicts (not every clip).  
+4. **Hold policy**: personal reels for affected players stay unpublished until confirm or exclude; high-confidence reels still send.  
+5. **Training loop**: coach Confirm / Reassign / Exclude becomes labeled data.  
+6. **Thumbnail regenerate** after a reassignment before notify.
+
+### Out of scope
+- Full livestream / broadcast  
+- Parent Reel Editor expansion (trim/music)  
+- Visual redesign, multi-sport app icon  
+- Replacing coach upload with new camera hardware  
+- Auto-sending low-confidence reels with a disclaimer
+
+### Human in the loop
+**Coach** confirms or reassigns ambiguous tags before family delivery. Product/ML does not silently guess on look-alike pairs below threshold. Support can see confirm history on tickets.
+
+### Acceptance criteria (testable)
+1. Given a clip whose top two jersey hypotheses are a look-alike pair both on the roster (e.g. 4 and 14) with confidence gap &lt; threshold, the clip appears in Coach Confirm and is **not** included in either personal reel until Confirm/Reassign/Exclude.  
+2. Confirming “Ava T. (#14)” places the clip only in Ava’s reel and regenerates Ava’s thumbnail within the send pipeline.  
+3. Games with zero low-confidence tags show **no** Confirm step; auto-send path unchanged.  
+4. Coach can complete a 3-item queue in ≤60 seconds in usability test (median).  
+5. Tagging-related support tickets (wrong kid / wrong number) drop ≥50% for pilot clubs in 30 days vs prior 30.  
+6. Analytics: share rate denominator documentation updated; dashboard shows open rate of generated reels (including never-opened), not only share-among-opened.
+
+### Top two failure modes after ship
+| Failure | What goes wrong | How we catch it |
+|---------|-----------------|-----------------|
+| 1. Threshold too aggressive | Coaches flooded with confirms → skip / abandon → delayed or unsent reels | Monitor confirms-per-game, abandon rate, time-to-send; auto-loosen threshold if median confirms &gt; N |
+| 2. Threshold too loose / wrong watchlist | Bad tags still ship; Ridgeline-class tickets continue | Ticket tag “wrong player”; weekly wrong-tag rate; sample audit of sent reels with look-alike jerseys on roster |
+
+### Non-goals / risks
+Coaches may be offline after games — need clear push + “reels waiting on 3 confirms” state. Do not block the whole team’s recap on one player’s ambiguity if product allows team auto-recap with face-blurred/unassigned clips; personal reels still hold.
+
+---
+
+## Task 3. Prototype
+
+Working clickable prototype of the core Coach Confirm flow (3 screens):
+
+1. **Game processed** — counts + banner “3 clips need confirm” (auto-confirmed vs held).  
+2. **Confirm tags** — clip stub with blurred jersey read, confidence, look-alike options (#4 Maya vs #14 Ava), Confirm / Reassign / Exclude.  
+3. **Reels ready** — summary table + Send to families.
+
+Open `prototype/index.html` in a browser (or the hosted public URL once filled above). Footer links to https://ajaia.ai.
+
+This is the two-to-three step flow that matters for the top roadmap item — not static frames.
+
+---
+
+## Task 4. AI Workflow Note
+
+I used AI to sort Materials 1–5 into themes, draft this Markdown structure, and generate the HTML/JS prototype. I kept human: the priority call (tagging over livestream and over survey-led editor), the concrete Ridgeline pushback message, and the acceptance criteria / failure modes. One thing I rejected from AI leaning: treating the $180k renewal or the 58% survey as automatic #1 — both are loud signals that lose to behavioral evidence (tickets + unopened reels + editor non-use).
+
+---
+
+*Candidate: Muhammad Ibrahim · Product Manager (AI &amp; Platform), Practice EHR · Islamabad · https://ajaia.ai*
+</pre></div>
+</div></body></html>
